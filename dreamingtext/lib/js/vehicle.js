@@ -5,7 +5,7 @@
 
 function Vehicle(x, y) {
   this.pos = createVector(random(width), random(height));
-  this.target = createVector(x, y);
+  this.target = [createVector(x, y)];
   this.vel = p5.Vector.random2D();
   this.acc = createVector();
   this.r = 8;
@@ -14,8 +14,8 @@ function Vehicle(x, y) {
   this.colorFill = color(random(0,200),random(0,200),random(0,200));
 }
 
-Vehicle.prototype.behaviors = function() {
-  var arrive = this.arrive(this.target);
+Vehicle.prototype.behaviors = function(t) {
+  var arrive = this.arrive(this.target[t]);
   var mouse = createVector(mouseX, mouseY);
   var flee = this.flee(mouse);
 
